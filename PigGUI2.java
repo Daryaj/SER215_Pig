@@ -15,6 +15,7 @@ JButton hold;
 JMenu options;
 JMenuItem quit;
 JMenuItem seeStats;
+JMenuItem howtoPlay;
 JMenuBar menuBar;
 JLabel diceLabel;
 JLabel diceLabel2;
@@ -49,11 +50,13 @@ public PigGUI()
     options = new JMenu("Options");
     quit = new JMenuItem("Quit");
     seeStats = new JMenuItem("See Stats");
+    howtoPlay = new JMenuItem("How to Play");
     menuBar = new JMenuBar();
     dice = new Dice();
 
     options.add(quit);
     options.add(seeStats);
+    options.add(howtoPlay);
 
     menuBar.add(options);
 
@@ -142,7 +145,9 @@ public PigGUI()
 
     quit.addActionListener(this);
     seeStats.addActionListener(this);
+    howtoPlay.addActionListener(this);
     getContentPane().setLayout(null);
+    
 
     this.getContentPane().add(mainPanel);
     rollDice = new JButton("Roll Dice");
@@ -177,6 +182,22 @@ public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(mainPanel,
                 "Your stats are: "); 
     }
+    
+    if (e.getSource() == howtoPlay)
+    {
+        JOptionPane.showMessageDialog(mainPanel,
+                "=============================HOW TO SET UP=============================\n"
+                + "Begin by entering player settings.\n"
+                + "Ener your first name and how many sides you'd like on each die ex: 1-20.\n"
+                + "Then select a difficulty level by entering the corresponding value.\n"
+                + "EASY = 1, MEDIUM = 2, and HARD = 3\n"
+                + "Finish by clicking 'Save Player Settings'\n"
+                + "=============================HOW TO PLAY=============================\n"
+                + "The object of the game is to be the first player to reach 100 points.\n"
+                + "You may choose to keep rolling the die or hold while it is your turn.\n"
+                + "Your turn ends once you decide to hold or if you roll a 1, or snake eyes.\n"
+                + "The game will end once you or the computer reaches 100 or more points.\n"); 
+    }
 
     if (e.getSource() == rollDice)
     {
@@ -186,3 +207,4 @@ public void actionPerformed(ActionEvent e) {
     }
 }
 }
+
